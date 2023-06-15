@@ -11,7 +11,8 @@ import warnings
 import matplotlib.pyplot as plt
 warnings.filterwarnings("ignore")
 
-data = pd.read_csv("mrk0.csv")
+data = pd.read_csv("mrk1.csv")
+data = data.iloc[:50000,:]
 x = data.drop('hospital_death', axis=1)
 y = data['hospital_death']
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=42)
@@ -23,7 +24,7 @@ optimizer='adam'
 init='glorot_uniform'
 reg = l2(0.001)
 model = Sequential()   
-model.add(Dense(128,input_shape=(106,),activation='relu',kernel_initializer=init))
+model.add(Dense(128,input_shape=(105,),activation='relu',kernel_initializer=init))
 model.add(Dense(64,activation='relu',kernel_regularizer=reg,kernel_initializer=init))
 model.add(Dropout(.25))
 model.add(Dense(32,activation='relu',kernel_regularizer=reg,kernel_initializer=init))

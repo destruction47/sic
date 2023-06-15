@@ -18,7 +18,7 @@ def diabetes_prediction(input_data):
     prediction = loaded_model.predict(input_data_reshaped)
     print(prediction)
 
-    if (prediction[0] == 0):
+    if (prediction[0] == 1):
       return 'The person is not Servived'
     else:
       return 'The person is Servived'
